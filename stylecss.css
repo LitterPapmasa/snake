@@ -1,0 +1,28 @@
+#matrix {
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    border-top: 1px solid #876;
+    border-left: 1px solid #876;
+}
+
+#matrix div {
+    position: relative;
+    float: left;
+    border-right: 1px solid #876;
+    border-bottom: 1px solid #876;
+    width: 24px;
+    height: 24px;
+
+}
+
+.active-cell {
+    background: red;
+
+}
+
+.snake {
+    background: #ff00ff;
+}
