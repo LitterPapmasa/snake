@@ -1,9 +1,8 @@
-function GameObj(x, y, matrix, type){
+function Snake(x, y, matrix){
     this.x = x;
     this.y = y;
     this.matrix = matrix;
     this.direct = 'nodirection';
-    this.type = type || 'food';
     this.speed = this.speed || 50;
     this.snakeBody = [];
 
@@ -13,7 +12,6 @@ function GameObj(x, y, matrix, type){
         // Snake init
         this.create = function(){
             console.log('game create');
-            //that.matrix.setCell([5,5], true);
             for(var i = sLenght -1 ; i >= 0 ; i--){
                 console.log("x:"+that.x + " y:"+that.y);
 

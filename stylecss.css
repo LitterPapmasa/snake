@@ -1,11 +1,17 @@
 #matrix {
     position: absolute;
 
-    width: 500px;
-    height: 500px;
+    width: 495px;
+    height: 495px;
 
     border-top: 1px solid #876;
     border-left: 1px solid #876;
+}
+
+#matrix h1 {
+    text-align: center;
+    padding-top: 200px;
+    color: white;
 }
 
 #matrix div {
@@ -13,12 +19,12 @@
     float: left;
     border-right: 1px solid #876;
     border-bottom: 1px solid #876;
-    width: 24px;
-    height: 24px;
+    width: 14px;
+    height: 14px;
 
 }
 
-.active-cell {
+.food {
     background: red;
 
 }
