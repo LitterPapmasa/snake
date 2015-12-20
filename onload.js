@@ -8,6 +8,7 @@ window.onload = function(){
     snake.create();
     snake.go();
 
+
     // var red = new GameObj(8, 11, m1);
     // red.create();
     // // red.go();

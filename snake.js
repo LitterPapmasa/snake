@@ -3,20 +3,20 @@ function Snake(x, y, matrix){
     this.y = y;
     this.matrix = matrix;
     this.direct = 'nodirection';
-    this.speed = this.speed || 50;
+    this.speed = this.speed || 100;
     this.snakeBody = [];
 
 
     var that = this;
-    var sLenght = 6;
+    var sLenght = 3;
         // Snake init
         this.create = function(){
-            console.log('game create');
+            console.log('snake create');
             for(var i = sLenght -1 ; i >= 0 ; i--){
                 console.log("x:"+that.x + " y:"+that.y);
 
                 that.snakeBody.unshift({x:that.x, y: ++that.y});
-                that.matrix.setCell([that.x, that.y], 2);
+                that.matrix.setCell([that.x, that.y], 1);
                //console.log('that.snakeBody:' + that.snakeBody[0].x);
            }
        }
@@ -51,13 +51,24 @@ function Snake(x, y, matrix){
                 case 'down': that.y--;
                 break;
             }
+            //console.log('that.matrix.food.length '+ that.matrix.food.length);
+            //for (var i = 0; i <= that.matrix.food.length - 1; i++ ){
+                if (that.x == that.matrix.food[0].x &&
+                            that.y == that.matrix.food[0].y){
+                    console.log('genNewFood x and y ');
+                    that.matrix.skillUp();
+                    that.snakeBody.unshift({x:that.x, y:that.y});
+               }
 
-           paintMove();
+            // }
+            if ( this.checkCollisions()) that.matrix.gameOver();
+
+            that.paintMove();
         }
 
     }
 
-    function paintMove(){
+    this.paintMove = function(){
         that.snakeBody.unshift({x:that.x, y:that.y});
         for(var i = 0; i < that.snakeBody.length; i++){
             var s =  that.snakeBody[i];
@@ -65,8 +76,19 @@ function Snake(x, y, matrix){
 
             if (i == that.snakeBody.length -1) that.matrix.setCell([s.x, s.y], 0);
         }
-
         that.snakeBody.pop();
+    }
+
+    this.checkCollisions = function(){
+
+        for(var i = 2; i <= that.snakeBody.length - 1; i++){
+            var s =  that.snakeBody[i];
+            if ((that.snakeBody[0].x == s.x) && (that.snakeBody[0].y == s.y)) {
+                console.log('check checkCollisions '+that.snakeBody[0].x+"; "+s.x);
+                return true;
+            }
+        }
+        return false;
     }
 
 

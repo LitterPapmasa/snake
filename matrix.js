@@ -5,8 +5,10 @@ function Matrix(destId, x, y){
     this.x = x;
     this.y = y;
     this.gameOver = false;
-    this.apples = 0;
-    this.score.innerHTML = this.apples;
+    this.food = [];
+    this.foodScore = 0;
+    this.score.innerHTML = this.foodScore;
+    // this.level =
 
     var that = this;
 
@@ -19,32 +21,27 @@ function Matrix(destId, x, y){
                 that.matrix.appendChild(cell);
             }
         }
+        that.genNewFood(1);
     }
 
-    // x = row, y = column, val if true paint, if fale clean
+    // xyArr is array[x,y], val: 0 - calean, 1 - snake paint, 2: food
     this.setCell = function(xyArr, val){
-
         console.log(xyArr[0] + ":" + xyArr[1]);
-        if ((that.x < xyArr[0]) ||
-            (that.y < xyArr[1]) ||
+        if ((that.x < xyArr[0]) || (that.y < xyArr[1]) ||
             (1 > xyArr[1]) || (1 > xyArr[0])) {
-            xyArr[0] = xyArr[1] = 1;
-            delete(this);
-            gameOver();
-        //stop();
+                delete(this);
+                that.gameOver();
         } else {
             if (position = that.getDiv(xyArr[0], xyArr[1])) {;
                 switch(val){
                     case 1:
-                        console.log('x:'+xyArr[0] + " y:" + xyArr[1]);
-                        console.log(position);
                         position.classList.add('snake');
                         break;
                     case 2:
                         position.classList.add('food');
                     break;
                     default:
-                        console.log('position:'+position);
+                        // console.log('position:'+position);
                         position.className = "cell";
                     break;
                 }
@@ -59,17 +56,25 @@ function Matrix(destId, x, y){
 
 
     this.skillUp = function(){
-        that.score.innerHTML = ++that.apples;
-        console.log('skill UP !!!!!!!!');
+        that.score.innerHTML = ++that.foodScore;
+        console.log('skill UP !!!');
         that.sound();
-        that.genNewApple();
+        that.genNewFood(1);
 
     }
 
-    this.genNewApple = function(){
-        var apple = new GameObj(Math.round(Math.random()*that.x), Math.round(Math.random()*that.y), that);
-        apple.create();
+    this.genNewFood = function(count){
+        this.count = count || 1;
+        for(var i = 1; i <= count; i++){
+            this.xFood = Math.round(Math.random()*that.x) || 1;
+            this.yFood = Math.round(Math.random()*that.y) || 1;
+            that.food.unshift({x:this.xFood, y:this.yFood});
+            that.setCell([this.xFood, this.yFood], 2);
+            console.log('genFood');
+        }
     }
+
+
 
     this.sound = function(actioin){
         var soundFile = new Audio("./sounds/get.mp3" ) ;
@@ -77,7 +82,7 @@ function Matrix(destId, x, y){
         soundFile.play();
     }
 
-     function gameOver(){
+    this.gameOver = function(){
         that.matrix.innerHTML = "<h1> Game over </h1>";
         that.matrix.style.border = 0;
         that.matrix.style.backgroundColor = 'black';
@@ -85,5 +90,7 @@ function Matrix(destId, x, y){
         that.gameOver = true;
         console.log('gameover');
     }
+
+
 }
 
