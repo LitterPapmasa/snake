@@ -76,9 +76,9 @@ function Matrix(destId, x, y){
 
 
 
-    this.sound = function(actioin){
-        var soundFile = new Audio("./sounds/get.mp3" ) ;
-
+    this.sound = function(action){
+        var soundFile = new Audio("./sounds/get.ogg" ) ;
+        console.log('ua = navigator.userAgent'+ navigator.userAgent);
         soundFile.play();
     }
 

@@ -1,11 +1,11 @@
 #matrix {
-    position: absolute;
+    position: relative;
 
     width: 495px;
     height: 495px;
-
-    border-top: 1px solid #876;
-    border-left: 1px solid #876;
+    margin:auto;
+    border: 1px solid #876;
+    /*border-left: 1px solid #876;*/
 }
 
 #matrix h1 {
@@ -17,11 +17,32 @@
 #matrix div {
     position: relative;
     float: left;
-    border-right: 1px solid #876;
-    border-bottom: 1px solid #876;
+    border-right: 1px solid #fff;
+    border-bottom: 1px solid #fff;
     width: 14px;
     height: 14px;
 
+}
+
+div#snake-keys {
+     position: relative;
+     float: left;
+     text-align: center;
+    padding-top:5px;
+     width: 100%;
+}
+
+#snake-keys div{
+    margin: auto;
+    display: block;
+    /*background: #000 url() 0 0 no-repeat;*/
+    width:300px;
+}
+
+#snake-keys > div > button {
+    width: 120px;
+    height: 40px;
+    border-radius: 20px;
 }
 
 .food {
