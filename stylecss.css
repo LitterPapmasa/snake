@@ -8,9 +8,21 @@
     /*border-left: 1px solid #876;*/
 }
 
+#matrix a {
+    display: block;
+    margin: auto;
+    text-align: center;
+    color: red;
+}
+
 #matrix h1 {
     text-align: center;
     padding-top: 200px;
+    color: white;
+}
+#matrix h3 {
+    text-align: center;
+    padding-top: 20px;
     color: white;
 }
 

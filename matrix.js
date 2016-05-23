@@ -84,6 +84,14 @@ function Matrix(destId, x, y){
 
     this.gameOver = function(){
         that.matrix.innerHTML = "<h1> Game over </h1>";
+        if (that.foodScore > 1) {
+            that.matrix.innerHTML += "<h3> You have eaten "+that.foodScore+" apples </h3>";
+        } else if (that.foodScore == 1) {
+            that.matrix.innerHTML += "<h3> You have eaten 1 apple </h3>";
+        } else {
+            that.matrix.innerHTML += "<h3> You stay hungry. Why are you not eating? </h3>";
+        }
+        that.matrix.innerHTML += "<a href=\"./index.html\"> restart </a>";
         that.matrix.style.border = 0;
         that.matrix.style.backgroundColor = 'black';
                 // clearInterval(that.go.movement);
